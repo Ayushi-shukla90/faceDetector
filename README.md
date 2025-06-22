@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**:  http://localhost:8080/
+**URL**:  https://ayushi-shukla90.github.io/faceDetector/
 
 ## About FaceCom
 
