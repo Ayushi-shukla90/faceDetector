@@ -14,25 +14,27 @@ const THEMES = { light: "", dark: ".dark" }
  * @property {Object.<string, string>=} theme
  */
 
-type ChartConfigItem = {
-  label?: React.ReactNode;
-  icon?: React.ComponentType;
-  color?: string;
-  theme?: { [key: string]: string };
-};
+/**
+ * @typedef {Object} ChartConfigItem
+ * @property {React.ReactNode=} label
+ * @property {React.ComponentType=} icon
+ * @property {string=} color
+ * @property {Object.<string, string>=} theme
+ */
 
-type ChartConfig = {
-  [key: string]: ChartConfigItem;
-};
+/**
+ * @typedef {Object.<string, ChartConfigItem>} ChartConfig
+ */
 
 /**
  * @typedef {Object} ChartContextProps
  * @property {ChartConfig} config
  */
 
-type ChartContextProps = {
-  config: ChartConfig;
-};
+/**
+ * @typedef {Object} ChartContextProps
+ * @property {ChartConfig} config
+ */
 
 const ChartContext = React.createContext<ChartContextProps | null>(null)
 
@@ -46,14 +48,16 @@ function useChart() {
   return context
 }
 
-type ChartContainerProps = {
-  id?: string;
-  className?: string;
-  config: ChartConfig;
-  children: React.ReactNode;
-} & React.HTMLAttributes<HTMLDivElement>;
+/**
+ * @typedef {Object} ChartContainerProps
+ * @property {string=} id
+ * @property {string=} className
+ * @property {ChartConfig} config
+ * @property {React.ReactNode} children
+ * @property {React.HTMLAttributes<HTMLDivElement>} [props]
+ */
 
-const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerProps>(
+const ChartContainer = React.forwardRef(
   ({ id, className, children, config, ...props }, ref) => {
     const uniqueId = React.useId();
     const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
@@ -81,17 +85,17 @@ const ChartContainer = React.forwardRef<HTMLDivElement, ChartContainerProps>(
 
 const ChartTooltip = RechartsPrimitive.Tooltip
 
-const ChartTooltipContent = React.forwardRef<
-  HTMLDivElement,
-  (RechartsPrimitive.TooltipProps<any, any> &
-    React.ComponentProps<"div"> & {
-      hideLabel?: boolean,
-      hideIndicator?: boolean,
-      indicator?: "line" | "dot" | "dashed",
-      nameKey?: string,
-      labelKey?: string,
-    })
->(
+/**
+ * @typedef {RechartsPrimitive.TooltipProps<any, any> & React.ComponentProps<"div"> & {
+ *   hideLabel?: boolean,
+ *   hideIndicator?: boolean,
+ *   indicator?: "line" | "dot" | "dashed",
+ *   nameKey?: string,
+ *   labelKey?: string,
+ * }} ChartTooltipContentProps
+ */
+
+const ChartTooltipContent = React.forwardRef(
   (
     {
       active,
@@ -200,7 +204,7 @@ const ChartTooltipContent = React.forwardRef<
                             {
                               "--color-bg": indicatorColor,
                               "--color-border": indicatorColor,
-                            } as React.CSSProperties
+                            }
                           }
                         />
                       )
@@ -237,14 +241,14 @@ ChartTooltipContent.displayName = "ChartTooltip"
 
 const ChartLegend = RechartsPrimitive.Legend
 
-const ChartLegendContent = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<"div"> &
-    Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
-      hideIcon?: boolean;
-      nameKey?: string;
-    }
->(
+/**
+ * @typedef {React.ComponentProps<"div"> & Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
+ *   hideIcon?: boolean,
+ *   nameKey?: string,
+ * }} ChartLegendContentProps
+ */
+
+const ChartLegendContent = React.forwardRef(
   ({ className, hideIcon = false, payload, verticalAlign = "bottom", nameKey }, ref) => {
     const { config } = useChart()
 
