@@ -9,7 +9,8 @@ if (rootElement) {
 
 import * as faceapi from 'face-api.js';
 
-async function loadModels() {
+// Export these functions for use in your components
+export async function loadModels() {
   const MODEL_URL = '/models';
   await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
   await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
@@ -17,7 +18,7 @@ async function loadModels() {
   await faceapi.nets.ageGenderNet.loadFromUri(MODEL_URL); // Needed for gender detection
 }
 
-async function detectGender(input: HTMLImageElement | HTMLVideoElement) {
+export async function detectGender(input: HTMLImageElement | HTMLVideoElement) {
   const detections = await faceapi
     .detectAllFaces(input, new faceapi.TinyFaceDetectorOptions())
     .withFaceLandmarks()
