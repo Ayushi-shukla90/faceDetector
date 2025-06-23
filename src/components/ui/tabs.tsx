@@ -20,7 +20,6 @@ const TabsList = React.forwardRef<
     />
   )
 )
-```
 TabsList.displayName = TabsPrimitive.List.displayName
 
 const TabsTrigger = React.forwardRef<

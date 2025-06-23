@@ -1,12 +1,12 @@
 import * as React from "react"
+import type { ElementRef, ComponentPropsWithoutRef } from "react"
 import * as AvatarPrimitive from "@radix-ui/react-avatar"
 
 import { cn } from "@/lib/utils"
-
 const Avatar = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Root>
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
-(({ className, ...props }, ref) => (
+  ElementRef<typeof AvatarPrimitive.Root>,
+  ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
+>(({ className, ...props }, ref) => (
   <AvatarPrimitive.Root
     ref={ref}
     className={cn(
@@ -15,25 +15,25 @@ const Avatar = React.forwardRef<
     )}
     {...props}
   />
-))
-Avatar.displayName = AvatarPrimitive.Root.displayName
+));
+Avatar.displayName = AvatarPrimitive.Root.displayName;
 
 const AvatarImage = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Image>
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
-(({ className, ...props }, ref) => (
+  ElementRef<typeof AvatarPrimitive.Image>,
+  ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
+>(({ className, ...props }, ref) => (
   <AvatarPrimitive.Image
     ref={ref}
     className={cn("aspect-square h-full w-full", className)}
     {...props}
   />
-))
-AvatarImage.displayName = AvatarPrimitive.Image.displayName
+));
+AvatarImage.displayName = AvatarPrimitive.Image.displayName;
 
 const AvatarFallback = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Fallback>
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
-(({ className, ...props }, ref) => (
+  ElementRef<typeof AvatarPrimitive.Fallback>,
+  ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
+>(({ className, ...props }, ref) => (
   <AvatarPrimitive.Fallback
     ref={ref}
     className={cn(
@@ -42,7 +42,7 @@ const AvatarFallback = React.forwardRef<
     )}
     {...props}
   />
-))
-AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
+));
+AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
 
 export { Avatar, AvatarImage, AvatarFallback }
