@@ -2,8 +2,6 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-// TypeScript interface removed for JavaScript compatibility
-
 const Textarea = React.forwardRef(
   ({ className, ...props }, ref) => {
     return (
