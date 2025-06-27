@@ -18,7 +18,7 @@ export async function loadModels() {
   await faceapi.nets.ageGenderNet.loadFromUri(MODEL_URL); // Needed for gender detection
 }
 
-export async function detectGender(input: HTMLImageElement | HTMLVideoElement) {
+export async function detectGender(input) {
   const detections = await faceapi
     .detectAllFaces(input, new faceapi.TinyFaceDetectorOptions())
     .withFaceLandmarks()
