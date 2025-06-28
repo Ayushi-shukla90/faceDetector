@@ -26,7 +26,7 @@ export async function detectGender(input) {
 
   detections.forEach(result => {
     const { gender, genderProbability } = result;
-    console.log(`Gender: ${gender}, Probability: ${genderProbability}`);
+    console.log(Gender, {gender}, Probability ,{genderProbability});
     // You can display this info on your UI as needed
   });
-}
+} 
